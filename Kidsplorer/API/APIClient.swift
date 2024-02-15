@@ -7,8 +7,7 @@
 
 import Foundation
 import Combine
-import SharedApiModels
-//import Crypto
+import Shared
 
 protocol ApiClient {
     var baseUrl: String { get }
@@ -75,12 +74,13 @@ class CCAPIClient: ApiClient {
 
     static let shared = CCAPIClient()
 
-    var baseUrl: String = "https://api.chargechill.app"
-//    var baseUrl: String = "http://10.0.1.18:8080"
+    var baseUrl: String = "https://kidsplorer.frose.io"
+
+//    #warning("Using local server")
 //    var baseUrl: String = "http://127.0.0.1:8080"
 
     var baseHeaders: [String : String]? = [
-        "RCID": SharedModel.shared.appUserID
+        "RCID": GlobalEnvironment.shared.appUserID
     ]
 
     lazy var urlSession: URLSession = {
@@ -88,5 +88,4 @@ class CCAPIClient: ApiClient {
         sessionConfig.httpMaximumConnectionsPerHost = 1        
         return URLSession(configuration: sessionConfig)
     }()
-
 }
