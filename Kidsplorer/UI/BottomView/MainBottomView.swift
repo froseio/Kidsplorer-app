@@ -23,6 +23,9 @@ struct MainBottomView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @ObservedObject var defaults = UserDefaultsManager.shared
 
+    @Environment(\.openURL)
+    var openURL
+
     var onAddressSelect: ((CLLocation) -> ())
 
     var body: some View {
@@ -88,6 +91,21 @@ struct MainBottomView: View {
             }
 
             CenterSummaryView()
+
+            HStack {
+                Button("Terms") {
+                    openURL(URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
+                }
+                .font(.footnote)
+
+                Spacer()
+
+                Button("Privacy") {
+                    openURL(URL(string: "https://frose.io/focusmap_privacy.html")!)
+                }
+                .font(.footnote)
+            }
+            .padding(.horizontal)
         }
     }
 }

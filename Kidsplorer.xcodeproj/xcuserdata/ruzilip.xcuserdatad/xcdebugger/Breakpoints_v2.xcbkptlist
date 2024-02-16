@@ -14,8 +14,8 @@
             filePath = "Kidsplorer/UI/MainView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Kidsplorer/UI/MainView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -88,7 +88,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kidsplorer/KidsplorerApp.swift"
@@ -414,6 +414,69 @@
                   startingLineNumber = "114"
                   endingLineNumber = "114"
                   offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "978950E9-CCC2-4292-9E10-FEFD017D9F28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kidsplorer/UI/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "loadMapPins(force:region:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "978950E9-CCC2-4292-9E10-FEFD017D9F28 - edc0d25f32b68279"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable () async throws -&gt; () in Kidsplorer.MainViewModel.loadMapPins(force: Swift.Bool, region: __C.MKCoordinateRegion) -&gt; ()"
+                  moduleName = "Kidsplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/UI/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "978950E9-CCC2-4292-9E10-FEFD017D9F28 - edc0d25f32b681bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable () async throws -&gt; () in Kidsplorer.MainViewModel.loadMapPins(force: Swift.Bool, region: __C.MKCoordinateRegion) -&gt; ()"
+                  moduleName = "Kidsplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/UI/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+               <Location
+                  uuid = "978950E9-CCC2-4292-9E10-FEFD017D9F28 - edc0d25f32b681bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable () async throws -&gt; () in Kidsplorer.MainViewModel.loadMapPins(force: Swift.Bool, region: __C.MKCoordinateRegion) -&gt; ()"
+                  moduleName = "Kidsplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/UI/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "1668">
                </Location>
             </Locations>
          </BreakpointContent>

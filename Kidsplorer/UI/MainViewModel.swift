@@ -142,13 +142,15 @@ class MainViewModel: ObservableObject {
                 return
             }
 
+            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
+
             let reqModel = PlacesEndpoint.GetPlaces.Request(
                 centerLatitude: lat,
                 centerLongitude: lon,
                 span: span,
                 categories: categories,
                 isPremium: UserDefaultsManager.shared.isPremium,
-                lang: "en" // TODO: fix langugage
+                lang: languageCode
             )
 
             let endpoint = PlacesEndpoint.GetPlaces(

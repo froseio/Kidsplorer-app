@@ -94,7 +94,7 @@ class UserDefaultsManager: ObservableObject {
         self.enabledCategories = {
             guard let data = UserDefaults.standard.data(forKey: UserDefaultsKey.enabledCategories.rawValue),
                   let categories = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSSet.self, NSString.self], from: data) as? Set<String> else {
-                return [POICategory.park.rawValue, POICategory.sport.rawValue]
+                return [POICategory.playground.rawValue, POICategory.sport.rawValue]
             }
             return categories
         }()

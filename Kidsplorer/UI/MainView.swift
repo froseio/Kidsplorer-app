@@ -56,7 +56,8 @@ struct MainView: View {
     var body: some View {
         Map(position: $mapPosition, selection: $selectedItem) {
 
-            pins()
+            // TODO: Uprav Z pozici
+            pins(pins: viewModel.pois)
 
             UserAnnotation()
         }
@@ -115,13 +116,13 @@ struct MainView: View {
 
     // MARK: - View funcs
 
-    func pins() -> some MapContent {
-        ForEach(viewModel.pois) { poi in
+    func pins(pins: [POIModel]) -> some MapContent {
+        ForEach(pins) { poi in
             Annotation(
                 poi.name,
                 coordinate: poi.coordinate,
-                anchor: .bottom)
-            {
+                anchor: .bottom
+            ) {
                 ZStack {
                     Circle()
                         .foregroundStyle(poi.category.color)

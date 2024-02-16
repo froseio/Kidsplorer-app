@@ -105,16 +105,8 @@ struct AddressInputView: View {
 
     private func searchItemView(item: MKMapItem, location: CLLocation, name: String) -> some View {
         HStack {
-            Button(action: {
-                dismiss()
-                onAddressSelect(location)
-                addSearchItemToHistory(item: item) // Uložení do historie
-                searchText = ""
-            }) {
-                searchItemContentView(item: item, name: name)
-            }
+            searchItemContentView(item: item, name: name, location: location)
             .tint(Color.text)
-            .buttonStyle(.plain)
             .padding(.vertical)
 
             if let onNavigateSelect {
@@ -137,7 +129,7 @@ struct AddressInputView: View {
         }
     }
 
-    private func searchItemContentView(item: MKMapItem, name: String) -> some View {
+    private func searchItemContentView(item: MKMapItem, name: String, location: CLLocation) -> some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(name).font(.headline)
@@ -145,6 +137,16 @@ struct AddressInputView: View {
             }
             Spacer()
             distanceView(from: item.placemark.location!)
+        }
+        .background {
+            Rectangle()
+                .foregroundColor(.background.opacity(0.001))
+                .onTapGesture {
+                    dismiss()
+                    onAddressSelect(location)
+                    addSearchItemToHistory(item: item) // Uložení do historie
+                    searchText = ""
+                }
         }
     }
 

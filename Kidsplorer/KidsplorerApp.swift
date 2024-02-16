@@ -25,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        GMSPlacesClient.provideAPIKey("AIzaSyCKa1BD_sfCeLtXgMz3dgsoIEJF-Or_icA")
+        GMSPlacesClient.provideAPIKey("AIzaSyD_lAXB4mIa_t30M4_PIw3INUx2k5v82vo")
 
         Purchases.logLevel = .error
         Purchases.configure(withAPIKey:"appl_kPlSEWNisJwfAMZeFigmyuYAlxV")

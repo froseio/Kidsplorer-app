@@ -13,7 +13,7 @@ extension POICategory {
 
     var imageName: String {
         switch self {
-            case .park:
+            case .playground:
                 return "teddybear.fill"
             case .sport:
                 return "figure.pool.swim"
@@ -25,8 +25,6 @@ extension POICategory {
                 return "tree"
             case .cultural:
                 return "theatermasks"
-            case .event:
-                return "personalhotspot"
         }
     }
 
@@ -36,7 +34,7 @@ extension POICategory {
 
     var title: String {
         switch self {
-            case .park:
+            case .playground:
                 "Playground"
             case .sport:
                 "Sport"
@@ -47,9 +45,7 @@ extension POICategory {
             case .nature:
                 "Nature"
             case .cultural:
-                "Culture"
-            case .event:
-                "Event"
+                "Culture"            
         }
     }
 }
