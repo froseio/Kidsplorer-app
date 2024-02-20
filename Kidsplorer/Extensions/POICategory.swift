@@ -48,4 +48,21 @@ extension POICategory {
                 "Culture"            
         }
     }
+
+    var desc: String {
+        switch self {
+            case .playground:
+                "all playgrounds"
+            case .sport:
+                "activities like swimming pools or amusement centres"
+            case .zoo:
+                "animals around"
+            case .educational:
+                "museum, libraries"
+            case .nature:
+                "park, nature reserves and more"
+            case .cultural:
+                "theatres and cinemas"
+        }
+    }
 }

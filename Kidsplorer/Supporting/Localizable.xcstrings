@@ -92,12 +92,52 @@
         }
       }
     },
+    "Enable" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povolit"
+          }
+        }
+      }
+    },
+    "Enable handling location to show places near you" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povolit polohu pro zobrazení míst ve vaší blízkosti"
+          }
+        }
+      }
+    },
+    "Filter by categories" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrování podle kategorií"
+          }
+        }
+      }
+    },
     "Get premium" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Získat prémium"
+          }
+        }
+      }
+    },
+    "Location" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokace"
           }
         }
       }
@@ -123,6 +163,26 @@
         }
       }
     },
+    "Next" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Další"
+          }
+        }
+      }
+    },
+    "On detail you can find" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V detailu najdete"
+          }
+        }
+      }
+    },
     "Open" : {
       "localizations" : {
         "cs" : {
@@ -143,12 +203,32 @@
         }
       }
     },
+    "or try search to find location where you travel" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nebo zkuste vyhledat místo, kam cestujete"
+          }
+        }
+      }
+    },
     "Phone" : {
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telefon"
+          }
+        }
+      }
+    },
+    "Pick categories you want to see" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte kategorie, které chcete zobrazit"
           }
         }
       }
@@ -165,7 +245,14 @@
       }
     },
     "Privacy" : {
-
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochrana osobních údajů"
+          }
+        }
+      }
     },
     "Search" : {
       "localizations" : {
@@ -183,6 +270,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hledání místa"
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přeskočit"
           }
         }
       }
@@ -209,7 +306,14 @@
       }
     },
     "Terms" : {
-
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podmínky"
+          }
+        }
+      }
     },
     "to load more images" : {
       "localizations" : {

@@ -110,13 +110,13 @@ class MainViewModel: ObservableObject {
     
     func loadMapPins(force: Bool = false, region: MKCoordinateRegion) {
 
-        if force {
-            self.pois.removeAll()
-        }
+//        if force {
+//            self.pois.removeAll()
+//        }
 
-        guard (force || hasRegionChangedSignificantly(from: lastLoadedRegion, to: region)) else {
-            return
-        }
+//        guard (force || hasRegionChangedSignificantly(from: lastLoadedRegion, to: region)) else {
+//            return
+//        }
 
         currentDataTask?.cancel()
 

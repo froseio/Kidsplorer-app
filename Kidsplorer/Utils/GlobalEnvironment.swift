@@ -20,6 +20,9 @@ class GlobalEnvironment: ObservableObject {
     // MARK: - Variables
 
     @Published
+    var displayIntro = false
+
+    @Published
     var displayPaywall = false
 
     @Published
@@ -49,15 +52,22 @@ class GlobalEnvironment: ObservableObject {
             .sink { isPremium in
                 if isPremium {
                     self.displayPaywall = false
+                    self.displayPaywall = false
                 }
             }
             .store(in: &cancellables)
+
+        if !UserDefaultsManager.shared.introWasPresented && !UserDefaultsManager.shared.isPremium {
+            displayIntro = true
+        }
+
     }
 
 
     // MARK: - Funcs
 
     func showPaywall() {
+        AnalyticsManager.track(.showPaywall)
         displayPaywall = true
         UserDefaultsManager.shared.lastPaywallShow = Date()
     }

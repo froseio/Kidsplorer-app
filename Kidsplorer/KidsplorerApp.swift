@@ -24,8 +24,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
+        
         GMSPlacesClient.provideAPIKey("AIzaSyD_lAXB4mIa_t30M4_PIw3INUx2k5v82vo")
+
+        FirebaseApp.configure()
 
         Purchases.logLevel = .error
         Purchases.configure(withAPIKey:"appl_kPlSEWNisJwfAMZeFigmyuYAlxV")
@@ -43,7 +45,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct KidsplorerApp: App {
 
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var delegate
 
     @StateObject
     var globalEnvironment = GlobalEnvironment.shared
@@ -69,10 +72,13 @@ struct KidsplorerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environmentObject(mainViewModel)
-                .environmentObject(globalEnvironment)
-                .sheet(isPresented: $globalEnvironment.displayPaywall, content: {
+            if globalEnvironment.displayIntro {
+                OnboardingView()
+                    .analyticsScreen(name: "OnboardingView")
+                    .environmentObject(globalEnvironment)
+            }
+            else if globalEnvironment.displayPaywall {
+                ZStack {
                     PaywallView()
                         .onRestoreCompleted({ customerInfo in
                             globalEnvironment.checkCustomerInfo(customerInfo)
@@ -80,7 +86,18 @@ struct KidsplorerApp: App {
                         .onPurchaseCompleted({ customerInfo in
                             globalEnvironment.checkCustomerInfo(customerInfo)
                         })
-                })
+                        .analyticsScreen(name: "PaywallView_main")
+
+                    Button("Skip") {
+                        globalEnvironment.displayPaywall = false
+                    }
+                }
+            }
+            else {
+                MainView()
+                    .environmentObject(mainViewModel)
+                    .environmentObject(globalEnvironment)                    
+            }
         }
         .modelContainer(sharedModelContainer)
     }

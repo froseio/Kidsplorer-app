@@ -15,10 +15,12 @@ extension POICategory {
 
     func select() {
         if enabled {
+            AnalyticsManager.track(.enableCategory, detailMessage: rawValue)
             UserDefaultsManager.shared.enabledCategories.remove(rawValue)
         }
         else {
             UserDefaultsManager.shared.enabledCategories.insert(rawValue)
+            AnalyticsManager.track(.disableCategory, detailMessage: rawValue)
         }
     }
 }

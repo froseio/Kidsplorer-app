@@ -35,6 +35,8 @@
 		903F18072B7E421800D82F68 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F18062B7E421800D82F68 /* BannerView.swift */; };
 		903F18092B7F6FE300D82F68 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 903F18082B7F6FE300D82F68 /* Localizable.xcstrings */; };
 		903F180B2B7F84D200D82F68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 903F180A2B7F84D200D82F68 /* GoogleService-Info.plist */; };
+		903F180D2B80881300D82F68 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F180C2B80881300D82F68 /* AnalyticsManager.swift */; };
+		903F180F2B832D8A00D82F68 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F180E2B832D8A00D82F68 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		903F18062B7E421800D82F68 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		903F18082B7F6FE300D82F68 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		903F180A2B7F84D200D82F68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		903F180C2B80881300D82F68 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		903F180E2B832D8A00D82F68 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 				903F17E12B7CB34E00D82F68 /* MainView.swift */,
 				903F17EF2B7D4C4300D82F68 /* MainViewModel.swift */,
 				903F18062B7E421800D82F68 /* BannerView.swift */,
+				903F180E2B832D8A00D82F68 /* OnboardingView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 		903F17E62B7D3CBF00D82F68 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				903F180C2B80881300D82F68 /* AnalyticsManager.swift */,
 				903F17EC2B7D4A8C00D82F68 /* LocationManager.swift */,
 				903F17EB2B7D4A8C00D82F68 /* PlaceImgLoader.swift */,
 				903F17E72B7D3CD700D82F68 /* GlobalEnvironment.swift */,
@@ -299,12 +305,14 @@
 				903F18012B7E0F8D00D82F68 /* AddressInputView.swift in Sources */,
 				903F18032B7E143E00D82F68 /* POIDetailView.swift in Sources */,
 				903F17BB2B7CA96500D82F68 /* KidsplorerApp.swift in Sources */,
+				903F180F2B832D8A00D82F68 /* OnboardingView.swift in Sources */,
 				903F17E22B7CB34E00D82F68 /* MainView.swift in Sources */,
 				903F17F32B7DEF9700D82F68 /* POIModel.swift in Sources */,
 				903F17F52B7DF25F00D82F68 /* POICategory.swift in Sources */,
 				903F17EE2B7D4A8C00D82F68 /* LocationManager.swift in Sources */,
 				903F17FF2B7E0F1100D82F68 /* MainBottomView.swift in Sources */,
 				903F17EA2B7D3CE800D82F68 /* UserdefaultsManager.swift in Sources */,
+				903F180D2B80881300D82F68 /* AnalyticsManager.swift in Sources */,
 				903F17ED2B7D4A8C00D82F68 /* PlaceImgLoader.swift in Sources */,
 				903F17F72B7E082900D82F68 /* CenterSummaryView.swift in Sources */,
 				903F17DF2B7CB33B00D82F68 /* APIClient.swift in Sources */,
@@ -460,7 +468,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -496,7 +504,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

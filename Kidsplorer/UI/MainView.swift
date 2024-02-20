@@ -70,7 +70,7 @@ struct MainView: View {
             MapCompass()
             MapScaleView()
             MapPitchToggle()
-        }
+        }        
         .sheet(isPresented: $bottomPresented) {
             NavigationStack(path: $bottomNavigationPath) {
                 MainBottomView(onAddressSelect: { loc in
@@ -93,9 +93,6 @@ struct MainView: View {
             .interactiveDismissDisabled()
 
         }
-        .onChangeOf(globalEnvironment.displayPaywall) { _ in
-            updateBottomViewVisibility()
-        }
         .onChangeOf(globalEnvironment.selectedPOI) { _ in
             updateBottomViewVisibility()
         }
@@ -109,8 +106,7 @@ struct MainView: View {
 
     func updateBottomViewVisibility() {
         bottomPresented =  (
-            !globalEnvironment.displayPaywall
-            && globalEnvironment.selectedPOI == nil
+            globalEnvironment.selectedPOI == nil
         )
     }
 

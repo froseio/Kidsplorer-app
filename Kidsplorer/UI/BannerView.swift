@@ -7,6 +7,8 @@
 
 import SwiftUI
 import RevenueCatUI
+import FirebaseAnalytics
+
 
 struct BannerView: View {
 
@@ -36,6 +38,7 @@ struct BannerView: View {
                 .padding(.trailing)
         }
         .onTapGesture {
+            AnalyticsManager.track(.bannerTap)
             presented = true
         }
         .sheet(
@@ -59,6 +62,7 @@ struct BannerView: View {
                             }
                         }
                     }
+                    .analyticsScreen(name: "PaywallView_banner")
             })
         .background(Color.background)
     }

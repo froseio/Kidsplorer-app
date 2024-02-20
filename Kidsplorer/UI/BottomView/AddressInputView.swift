@@ -75,6 +75,7 @@ struct AddressInputView: View {
                 await searchInAppleMaps()
             }
         }
+        .analyticsScreen(name: "AddressInputView")
     }
 
     // Při ukládání MKMapItem do UserDefaults

@@ -46,30 +46,41 @@ struct MainBottomView: View {
 
         VStack {
 
-            Button(action: {
-                isSearching.toggle()
-            }, label: {
-                HStack {
-                    Image(systemName: "magnifyingglass.circle.fill")
-                        .font(.headline)
-                        .foregroundStyle(Color.text)
+            HStack {
+                Button(action: {
+                    isSearching.toggle()
+                }, label: {
+                    HStack {
+                        Image(systemName: "magnifyingglass.circle.fill")
+                            .font(.headline)
+                            .foregroundStyle(Color.text)
 
-                    Text("Search")
-                        .font(.headline)
-                        .foregroundStyle(Color.text)
-                    Spacer()
+                        Text("Search")
+                            .font(.headline)
+                            .foregroundStyle(Color.text)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .background(Color.background)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                })
+                .sheet(isPresented: $isSearching, content: {
+                    AddressInputView { loc in
+                        onAddressSelect(loc)
+                    }
+                })
+
+                if mainVM.isLoading {
+                    ProgressView()
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(.background)
+                        }
+                        .padding(.leading)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                .background(Color.background)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .padding()
-            })
-            .sheet(isPresented: $isSearching, content: {
-                AddressInputView { loc in
-                    onAddressSelect(loc)
-                }
-            })
+            }
+            .padding()
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {

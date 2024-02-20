@@ -17,6 +17,7 @@ class UserDefaultsManager: ObservableObject {
     enum UserDefaultsKey: String {
         case lastPaywallShow
         case isPremium
+        case introWasPresented
         case userLocationKey
         case enabledCategories
         case premiumcode
@@ -33,6 +34,16 @@ class UserDefaultsManager: ObservableObject {
 
 
     // MARK: - Variables
+
+    var introWasPresented: Bool {
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKey.introWasPresented.rawValue)
+        }
+
+        get {
+            UserDefaults.standard.bool(forKey: UserDefaultsKey.introWasPresented.rawValue)
+        }
+    }
 
     @Published var premiumCode: String? {
         didSet {

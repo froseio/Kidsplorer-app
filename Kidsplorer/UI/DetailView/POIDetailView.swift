@@ -10,6 +10,7 @@ import Shared
 import CoreLocation
 import GooglePlaces
 import MapKit
+import StoreKit
 
 struct POIDetailView: View {
 
@@ -26,15 +27,16 @@ struct POIDetailView: View {
             loadingView
                 .task {
                     await loadDetail()
-                    isLoading = false
                 }
         }
         else if let detail {
             detailView(detail)
                 .toolbarBackground(.hidden, for: .navigationBar)
+                .analyticsScreen(name: "Detail view")
         }
         else {
             errorView
+                .analyticsScreen(name: "Detail error")
         }
     }
 
@@ -46,6 +48,7 @@ struct POIDetailView: View {
                 .padding()
             Button("Try again") {
                 isLoading = true
+                AnalyticsManager.track(.tryAgainDetail)
             }
             .font(.subheadline)
             .foregroundColor(Color.red)
@@ -64,14 +67,24 @@ struct POIDetailView: View {
     }
 
     func loadDetail() async {
+
         guard let id = poi.gpid else {
+            DispatchQueue.main.async {
+                isLoading = false
+            }
             return
         }
+
+        DispatchQueue.main.async {
+            isLoading = true
+        }
+
+        let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
 
         let reqModel = PlacesEndpoint.GetDetailPlace.Request(
             gpid: id,
             isPremium: UserDefaultsManager.shared.isPremium,
-            lang: "en" // TODO: Lang
+            lang: languageCode
         )
 
         let endpoint = PlacesEndpoint.GetDetailPlace(
@@ -81,8 +94,15 @@ struct POIDetailView: View {
         let response = try? await CCAPIClient.shared.load(endpoint: endpoint)
 
         DispatchQueue.main.async {
+
             isLoading = false
-            self.detail = response?.detail
+
+            if let d = response?.detail {
+                self.detail = d
+
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
         }
     }
 }
@@ -259,15 +279,29 @@ fileprivate struct PoiDetailSubView: View {
     }
 
     var addressView: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Address")
-                    .font(.footnote)
-                Spacer()
+        HStack() {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Address")
+                        .font(.footnote)
+                    Spacer()
+                }
+                Text(detail.address ?? alternativeAddress)
             }
-            Text(detail.address ?? alternativeAddress)
+            Spacer()
+            Button(action: {
+                let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: poi.coordinate))
+                mapItem.openInMaps()
+                AnalyticsManager.track(.openInMap)
+            }, label: {
+                Image(systemName: "map")
+                    .bold()
+                    .foregroundColor(.text)
+                    .padding()
+                    .background(Color.playground)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))                
+            })
 
-            // TODO: share button
         }
         .padding()
         .background {

@@ -30,9 +30,9 @@
             filePath = "../Server/Sources/Server/DataFetch/OSMDataFetch.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "fetch(categories:lat:lon:span:client:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "fetch(category:lat:lon:span:limit:client:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,8 +46,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "addressView"
             landmarkType = "24">
          </BreakpointContent>
@@ -78,88 +78,10 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "addressView"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Kidsplorer/KidsplorerApp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F - ad37ebf9f3e84c3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onPurchaseCompleted(@Swift.MainActor @Sendable (RevenueCat.CustomerInfo) -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in Kidsplorer.KidsplorerApp.body.getter : some"
-                  moduleName = "Kidsplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/KidsplorerApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "664">
-               </Location>
-               <Location
-                  uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F - c4173f66666d322c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 @Swift.MainActor @Sendable (RevenueCat.CustomerInfo) -&gt; () in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onPurchaseCompleted(@Swift.MainActor @Sendable (RevenueCat.CustomerInfo) -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in Kidsplorer.KidsplorerApp.body.getter : some"
-                  moduleName = "Kidsplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/KidsplorerApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F - ad37ebf9f3e84c3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onPurchaseCompleted(@Swift.MainActor @Sendable (RevenueCat.CustomerInfo) -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in Kidsplorer.KidsplorerApp.body.getter : some"
-                  moduleName = "Kidsplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/KidsplorerApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "332">
-               </Location>
-               <Location
-                  uuid = "A72B1C8A-185B-4F22-ABFD-56E1062A555F - ad37ebf9f3e84c3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onPurchaseCompleted(@Swift.MainActor @Sendable (RevenueCat.CustomerInfo) -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in Kidsplorer.KidsplorerApp.body.getter : some"
-                  moduleName = "Kidsplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/KidsplorerApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "472">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -172,8 +94,8 @@
             filePath = "Kidsplorer/Utils/GlobalEnvironment.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "showPaywall()"
             landmarkType = "7">
          </BreakpointContent>
@@ -188,8 +110,8 @@
             filePath = "Kidsplorer/Utils/GlobalEnvironment.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "checkAndShowPaywall()"
             landmarkType = "7">
          </BreakpointContent>
@@ -204,8 +126,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -220,11 +142,26 @@
             filePath = "Kidsplorer/Utils/GlobalEnvironment.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "checkCustomerInfo(_:)"
             landmarkType = "7">
             <Locations>
+               <Location
+                  uuid = "569D81C8-EE68-4610-891C-03F78DD70F1D - 10dcb5f03f02fccd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kidsplorer.GlobalEnvironment.checkCustomerInfo(Swift.Optional&lt;RevenueCat.CustomerInfo&gt;) -&gt; ()"
+                  moduleName = "Kidsplorer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/Utils/GlobalEnvironment.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "464">
+               </Location>
                <Location
                   uuid = "569D81C8-EE68-4610-891C-03F78DD70F1D - 10dcb5f03f02fd2a"
                   shouldBeEnabled = "Yes"
@@ -238,21 +175,6 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
                   endingLineNumber = "90"
-                  offsetFromSymbolStart = "516">
-               </Location>
-               <Location
-                  uuid = "569D81C8-EE68-4610-891C-03F78DD70F1D - 10dcb5f03f02fd0b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Kidsplorer.GlobalEnvironment.checkCustomerInfo(Swift.Optional&lt;RevenueCat.CustomerInfo&gt;) -&gt; ()"
-                  moduleName = "Kidsplorer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ruzilip/Business/My%20Projects/Kidsplorer/App/Kidsplorer/Utils/GlobalEnvironment.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -268,25 +190,9 @@
             filePath = "Kidsplorer/Utils/GlobalEnvironment.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "checkAndShowPaywall()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B988C049-67FA-40A4-B9AE-F3C2FB5DF776"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Server/Sources/Server/Controllers/POIController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "getPlacesDetail(requestModel:req:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -316,8 +222,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -332,8 +238,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
             landmarkName = "loadPhotos()"
             landmarkType = "7">
          </BreakpointContent>
@@ -348,8 +254,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "loadPhotos()"
             landmarkType = "7">
          </BreakpointContent>
@@ -364,8 +270,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "loadPhotos()"
             landmarkType = "7">
          </BreakpointContent>
@@ -380,8 +286,8 @@
             filePath = "Kidsplorer/UI/DetailView/POIDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "init(poi:detail:)"
             landmarkType = "7">
             <Locations>
