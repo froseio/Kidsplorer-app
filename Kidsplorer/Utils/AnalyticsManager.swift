@@ -18,6 +18,7 @@ class AnalyticsManager {
         case enableCategory
 
         case showPaywall
+        case dismissPaywall
         case openInMap
 
         case nextIntro

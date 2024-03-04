@@ -94,7 +94,6 @@ struct MainBottomView: View {
             }
 
 
-            // TODO: banner
             if !UserDefaultsManager.shared.isPremium {
                 BannerView(subtitle: "to load all places where you can spend great time")
                     .clipShape(RoundedRectangle(cornerRadius: 15))

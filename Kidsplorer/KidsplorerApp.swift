@@ -27,7 +27,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         GMSPlacesClient.provideAPIKey("AIzaSyD_lAXB4mIa_t30M4_PIw3INUx2k5v82vo")
 
+        #if !DEBUG
         FirebaseApp.configure()
+        #endif
 
         Purchases.logLevel = .error
         Purchases.configure(withAPIKey:"appl_kPlSEWNisJwfAMZeFigmyuYAlxV")
@@ -51,11 +53,11 @@ struct KidsplorerApp: App {
     @StateObject
     var globalEnvironment = GlobalEnvironment.shared
 
-    let mainViewModel = MainViewModel()
-
+    let mainViewModel: MainViewModel
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            //            Item.self,
+            FavoritePoi.self,
+            VisitedPoi.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -67,7 +69,7 @@ struct KidsplorerApp: App {
     }()
 
     init() {
-
+        mainViewModel = MainViewModel(modelContext: sharedModelContainer.mainContext)
     }
 
     var body: some Scene {
@@ -78,7 +80,7 @@ struct KidsplorerApp: App {
                     .environmentObject(globalEnvironment)
             }
             else if globalEnvironment.displayPaywall {
-                ZStack {
+                ZStack(alignment: .topTrailing) {
                     PaywallView()
                         .onRestoreCompleted({ customerInfo in
                             globalEnvironment.checkCustomerInfo(customerInfo)
@@ -90,7 +92,10 @@ struct KidsplorerApp: App {
 
                     Button("Skip") {
                         globalEnvironment.displayPaywall = false
+                        AnalyticsManager.track(.dismissPaywall)
                     }
+                    .foregroundColor(Color.black)
+                    .padding()
                 }
             }
             else {

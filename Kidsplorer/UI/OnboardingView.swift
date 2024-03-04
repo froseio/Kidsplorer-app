@@ -103,7 +103,9 @@ struct OnboardingView: View {
 
                     Button("Skip") {
                         AnalyticsManager.track(.skipIntroPaywall)
+                        UserDefaultsManager.shared.lastPaywallShow = Date()
                         globalEnvironment.displayIntro = false
+                        globalEnvironment.displayPaywall = false
                         UserDefaultsManager.shared.introWasPresented = true
                     }
                     .foregroundColor(Color.black)

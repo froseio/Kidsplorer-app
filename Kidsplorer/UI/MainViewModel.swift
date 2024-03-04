@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import Shared
 import MapKit
+import SwiftData
 
 class MainViewModel: ObservableObject {
 
@@ -30,11 +31,14 @@ class MainViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     private var workItem: DispatchWorkItem?
     private var currentDataTask: Task<Void, any Error>?
+    private var modelContext: ModelContext
 
 
     // MARK: - Initialize
 
-    init() {
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
+
         UserDefaultsManager
             .shared
             .$enabledCategories
@@ -160,8 +164,13 @@ class MainViewModel: ObservableObject {
             let response = try await CCAPIClient.shared.load(endpoint: endpoint)
             self.lastLoadedRegion = region
 
+            let desc = FetchDescriptor<FavoritePoi>()
+            let fetchedItems = (try? modelContext.fetch(desc).map({$0.id})) ?? []
+
             DispatchQueue.main.async {
-                self.pois = response.pois
+                self.pois = response.pois.filter({ p in
+                    !fetchedItems.contains(p.id)
+                })
 
                 DispatchQueue.main.async {
                     self.isLoading = false

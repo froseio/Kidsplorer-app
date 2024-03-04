@@ -15,17 +15,21 @@ class PlaceImgLoader: ObservableObject {
     @Published var image: UIImage?
 
     private var id: String
+    private var gpid: String?
     private var location: CLLocationCoordinate2D
     private var reloadNextTime: Bool = false
     private var imgSize = CGSize(width: 500, height: 500)
 
-    public init(id: String, location: CLLocation) {
+    public init(id: String, location: CLLocation, gpid: String?) {
         self.id = id
+        self.gpid = gpid
         self.location = location.coordinate
 
         if let cachedImage = loadImageFromFileSystem() {
             self.image = cachedImage
         }
+
+
     }
 
     public func getImage() {
@@ -73,6 +77,9 @@ class PlaceImgLoader: ObservableObject {
     private func loadImage() {
         Task {
             do {
+
+                
+
                 let sceneRequest = MKLookAroundSceneRequest(coordinate: location)
                 guard let scene = try await sceneRequest.scene else {
                     logger.error("No scene for location \(self.location.latitude) x \(self.location.longitude)")

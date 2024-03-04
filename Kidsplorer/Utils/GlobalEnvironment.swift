@@ -52,7 +52,6 @@ class GlobalEnvironment: ObservableObject {
             .sink { isPremium in
                 if isPremium {
                     self.displayPaywall = false
-                    self.displayPaywall = false
                 }
             }
             .store(in: &cancellables)
@@ -60,7 +59,6 @@ class GlobalEnvironment: ObservableObject {
         if !UserDefaultsManager.shared.introWasPresented && !UserDefaultsManager.shared.isPremium {
             displayIntro = true
         }
-
     }
 
 
@@ -73,38 +71,46 @@ class GlobalEnvironment: ObservableObject {
     }
 
     func checkAndShowPaywall() {
-        if UserDefaultsManager.shared.premiumCode == "PremiumPower" {
-            UserDefaultsManager
-                .shared
-                .isPremium = true
-        }
-        
-        guard !UserDefaultsManager.shared.isPremium else {
-            return
-        }
+        Task {
+            do {
+                let customerInfo = try await Purchases.shared.customerInfo()
+                checkCustomerInfo(customerInfo)
+            }
+            catch {
+                logger.error("Cant check customer info")
+            }
 
-        let now = Date.now
-        let calendar = Calendar.current
-
-        if let lastPaywallShow = UserDefaultsManager.shared.lastPaywallShow {
-            if let diff = calendar.dateComponents([.day], from: lastPaywallShow, to: now).day, diff <= 2 {
+            guard !UserDefaultsManager.shared.isPremium else {
                 return
             }
-        }
 
-        showPaywall()
+            let now = Date.now
+            let calendar = Calendar.current
+
+            if let lastPaywallShow = UserDefaultsManager.shared.lastPaywallShow {
+                if let diff = calendar.dateComponents([.day], from: lastPaywallShow, to: now).day, diff <= 2 {
+                    return
+                }
+            }
+
+            DispatchQueue.main.async {
+                self.showPaywall()
+            }
+        }
     }
 
     func checkCustomerInfo(_ customerInfo: CustomerInfo?) {
-        if UserDefaultsManager.shared.premiumCode == "PremiumPower" {
-            UserDefaultsManager
-                .shared
-                .isPremium = true
-        }
-        else {
-            UserDefaultsManager
-                .shared
-                .isPremium = !(customerInfo?.activeSubscriptions.isEmpty ?? true)
+        DispatchQueue.main.async {
+            if UserDefaultsManager.shared.premiumCode == "PremiumPower" {
+                UserDefaultsManager
+                    .shared
+                    .isPremium = true
+            }
+            else {
+                UserDefaultsManager
+                    .shared
+                    .isPremium = !(customerInfo?.activeSubscriptions.isEmpty ?? true)
+            }
         }
     }
 }

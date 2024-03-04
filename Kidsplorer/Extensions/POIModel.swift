@@ -23,7 +23,12 @@ extension POIModel: Hashable {
 extension POIModel: Identifiable {
 
     public var id: String {
-        "\(lat)\(lon)\(gpid ?? "osm")"
+        if let gpid {
+            return gpid
+        }
+        else {
+            return "\(lat)_\(lon)_\(category)"
+        }
     }
 }
 

@@ -31,12 +31,6 @@
             "state" : "translated",
             "value" : "Adresa"
           }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adresse"
-          }
         }
       }
     },
@@ -59,6 +53,9 @@
           }
         }
       }
+    },
+    "Check in" : {
+
     },
     "Closed" : {
       "localizations" : {
@@ -261,6 +258,12 @@
             "state" : "translated",
             "value" : "Hledání"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
         }
       }
     },
@@ -273,6 +276,9 @@
           }
         }
       }
+    },
+    "Search this area" : {
+
     },
     "Skip" : {
       "localizations" : {
@@ -311,6 +317,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podmínky"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms"
           }
         }
       }
@@ -359,6 +371,12 @@
       "extractionState" : "stale",
       "localizations" : {
         "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoo"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zoo"

@@ -11,6 +11,7 @@ import CoreLocation
 import GooglePlaces
 import MapKit
 import StoreKit
+import SwiftData
 
 struct POIDetailView: View {
 
@@ -21,6 +22,10 @@ struct POIDetailView: View {
 
     @State
     private var isLoading = true
+
+    var id: String {
+        poi.id
+    }
 
     var body: some View {
         if isLoading {
@@ -130,6 +135,13 @@ fileprivate struct PoiDetailSubView: View {
     @State
     var gphotoMetadata: [GMSPlacePhotoMetadata] = []
 
+    @Environment(\.modelContext)
+    private var modelContext
+
+    @Query
+    var allFavorites: [FavoritePoi]
+
+
     init(poi: POIModel, detail: POIDetailModel) {
         self.poi = poi
         self.detail = detail
@@ -150,6 +162,66 @@ fileprivate struct PoiDetailSubView: View {
                     .padding(.horizontal)
 
                 summaryView
+
+                HStack {
+//                    Button(action: {
+//                        // TODO: checking
+//                    }, label: {
+//                        HStack {
+//                            Spacer()
+//                            VStack {
+//                                Text("Check in")
+//                                // TODO: last checkin
+//                            }
+//                            .foregroundColor(.text)
+//                            Spacer()
+//                        }
+//                    })
+//                    .padding()
+//                    .background {
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .foregroundColor(.background)
+//                    }
+
+                    Spacer()
+
+                    if let fav = allFavorites.first(where: {$0.id == poi.id}) {
+                        Button(action: {
+                            modelContext.delete(fav)
+                        }, label: {
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(Color.red)
+                        })
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.background)
+                        }
+                    }
+                    else {
+                        Button(action: {
+                            let fp = FavoritePoi(
+                                lat: poi.lat,
+                                lon: poi.lon,
+                                name: poi.name,
+                                category: poi.category,
+                                gpid: poi.gpid
+                            )
+                            modelContext.insert(fp)
+
+                        }, label: {
+                            Image(systemName: "heart")
+                                .foregroundStyle(Color.red)
+                        })
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.background)
+                        }
+                    }
+
+                }
+                .padding()
 
                 addressView
 

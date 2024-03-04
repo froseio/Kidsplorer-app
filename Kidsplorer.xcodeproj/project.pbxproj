@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		902A546B2B9086FD00EFB13B /* LastVisitedPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902A546A2B9086FD00EFB13B /* LastVisitedPlacesView.swift */; };
+		902A546D2B9087C400EFB13B /* VisitedPoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902A546C2B9087C400EFB13B /* VisitedPoi.swift */; };
 		903F17BB2B7CA96500D82F68 /* KidsplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F17BA2B7CA96500D82F68 /* KidsplorerApp.swift */; };
 		903F17C12B7CA96700D82F68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 903F17C02B7CA96700D82F68 /* Assets.xcassets */; };
 		903F17C42B7CA96700D82F68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 903F17C32B7CA96700D82F68 /* Preview Assets.xcassets */; };
@@ -37,9 +39,12 @@
 		903F180B2B7F84D200D82F68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 903F180A2B7F84D200D82F68 /* GoogleService-Info.plist */; };
 		903F180D2B80881300D82F68 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F180C2B80881300D82F68 /* AnalyticsManager.swift */; };
 		903F180F2B832D8A00D82F68 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F180E2B832D8A00D82F68 /* OnboardingView.swift */; };
+		903F18142B8CC70600D82F68 /* FavoritePoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F18132B8CC70600D82F68 /* FavoritePoi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		902A546A2B9086FD00EFB13B /* LastVisitedPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastVisitedPlacesView.swift; sourceTree = "<group>"; };
+		902A546C2B9087C400EFB13B /* VisitedPoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedPoi.swift; sourceTree = "<group>"; };
 		903F17B72B7CA96500D82F68 /* Kidsplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kidsplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		903F17BA2B7CA96500D82F68 /* KidsplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsplorerApp.swift; sourceTree = "<group>"; };
 		903F17C02B7CA96700D82F68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 		903F180A2B7F84D200D82F68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		903F180C2B80881300D82F68 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		903F180E2B832D8A00D82F68 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		903F18132B8CC70600D82F68 /* FavoritePoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePoi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		903F17B92B7CA96500D82F68 /* Kidsplorer */ = {
 			isa = PBXGroup;
 			children = (
+				903F18122B8CC6EE00D82F68 /* DataModel */,
 				903F17F12B7DEF8D00D82F68 /* Extensions */,
 				903F17E62B7D3CBF00D82F68 /* Utils */,
 				903F17E02B7CB34200D82F68 /* UI */,
@@ -160,6 +167,7 @@
 				903F17EF2B7D4C4300D82F68 /* MainViewModel.swift */,
 				903F18062B7E421800D82F68 /* BannerView.swift */,
 				903F180E2B832D8A00D82F68 /* OnboardingView.swift */,
+				902A546A2B9086FD00EFB13B /* LastVisitedPlacesView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -212,6 +220,15 @@
 				903F18042B7E2F2D00D82F68 /* CLGeocoder.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		903F18122B8CC6EE00D82F68 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				903F18132B8CC70600D82F68 /* FavoritePoi.swift */,
+				902A546C2B9087C400EFB13B /* VisitedPoi.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903F18142B8CC70600D82F68 /* FavoritePoi.swift in Sources */,
 				903F17E82B7D3CD700D82F68 /* GlobalEnvironment.swift in Sources */,
+				902A546B2B9086FD00EFB13B /* LastVisitedPlacesView.swift in Sources */,
+				902A546D2B9087C400EFB13B /* VisitedPoi.swift in Sources */,
 				903F17FE2B7E0F1100D82F68 /* FilterItemView.swift in Sources */,
 				903F18072B7E421800D82F68 /* BannerView.swift in Sources */,
 				903F18012B7E0F8D00D82F68 /* AddressInputView.swift in Sources */,
@@ -378,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -435,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -468,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -504,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

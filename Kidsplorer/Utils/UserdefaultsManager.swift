@@ -113,6 +113,8 @@ class UserDefaultsManager: ObservableObject {
         if let premiumCode = UserDefaults.standard.value(forKey: UserDefaultsKey.premiumcode.rawValue) as? String {
             self.premiumCode = premiumCode
         }
+
+        self.isPremium = UserDefaults.standard.bool(forKey: UserDefaultsKey.isPremium.rawValue)
     }
 
 

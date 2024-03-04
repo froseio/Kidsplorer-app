@@ -9,6 +9,7 @@ import SwiftUI
 import CoreLocation
 import MapKit
 import Shared
+import SwiftData
 
 struct CenterSummaryView: View {
 
@@ -26,6 +27,9 @@ struct CenterSummaryView: View {
 
     @EnvironmentObject
     var mainViewModel: MainViewModel
+
+    @Query
+    var favorites: [FavoritePoi]
 
     var body: some View {
         Group {
@@ -67,6 +71,24 @@ struct CenterSummaryView: View {
                     .padding()
             }
 
+            SectionView(name: "Favorite places", count: favorites.count)
+            rowContent(
+                favorites
+                    .map { $0.poiModel }
+                    .sorted {
+                        let p1Loc = CLLocation(latitude: $0.lat, longitude: $0.lon)
+                        let p2Loc = CLLocation(latitude: $1.lat, longitude: $1.lon)
+                        let d1 = centerLocation.distance(from: p1Loc)
+                        let d2 = centerLocation.distance(from: p2Loc)
+                        return d1 < d2
+                    }
+                    .prefix(UserDefaultsManager.shared.isPremium ? favorites.count : 3)
+                    .compactMap {
+                        POIListItemView(from: $0, centerLocation: centerLocation)
+                    }
+            )
+            .accessibilityIdentifier("favoriteRow")
+
             ForEach(POICategory.allCases, id: \.rawValue) { c in
                 let availableItems = mainViewModel
                     .pois
@@ -80,7 +102,7 @@ struct CenterSummaryView: View {
                         let d2 = centerLocation.distance(from: p2Loc)
                         return d1 < d2
                     }
-                    .prefix(UserDefaultsManager.shared.isPremium ? 10 : Int.random(in: 3...5))
+                    .prefix(UserDefaultsManager.shared.isPremium ? 10 : 3)
                     .compactMap {
                         POIListItemView(from: $0, centerLocation: centerLocation)
                     }
@@ -192,6 +214,7 @@ struct POIListItemView: View, Identifiable {
     var location: CLLocation
     var detail: Bool = false
     var centerLocation: CLLocation?
+    var gpid: String?
 
     var poi: POIModel
 

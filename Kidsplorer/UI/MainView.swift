@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import Shared
+import SwiftData
 
 struct MainView: View {
 
@@ -50,27 +51,60 @@ struct MainView: View {
     @State
     private var bottomDetent: PresentationDetent = minimalDetent
 
+    @State
+    private var showRefreshButton = false
+
+    @State
+    private var region: MKCoordinateRegion?
+
+    @Environment(\.modelContext)
+    private var modelContext
+    
+    @Query
+    var favoritePois: [FavoritePoi]
 
     // MARK: - View variables
 
     var body: some View {
-        Map(position: $mapPosition, selection: $selectedItem) {
+        ZStack(alignment: .top) {
+            Map(position: $mapPosition, selection: $selectedItem) {
 
-            // TODO: Uprav Z pozici
-            pins(pins: viewModel.pois)
+                pins(pins: viewModel.pois)
 
-            UserAnnotation()
+                favoritePins()
+
+                UserAnnotation()
+            }
+            .mapStyle(.standard(pointsOfInterest: .excludingAll))
+            .onMapCameraChange { context in
+                if viewModel.pois.isEmpty {
+                    self.viewModel.loadMapPins(region: context.region)
+                }
+
+                showRefreshButton = true
+            }
+            .mapControls {
+                MapUserLocationButton()
+                MapCompass()
+                MapScaleView()
+                MapPitchToggle()
+            }
+
+            if showRefreshButton {
+                Button {
+                    showRefreshButton = false
+                    if let region {
+                        viewModel.loadMapPins(region: region)
+                    }
+                } label: {
+                    Text("Search this area")
+                        .padding()
+                        .background(Color.background)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                }
+                .padding()
+            }
         }
-        .mapStyle(.standard(pointsOfInterest: .excludingAll))
-        .onMapCameraChange { context in
-            self.viewModel.loadMapPins(region: context.region)
-        }
-        .mapControls {
-            MapUserLocationButton()
-            MapCompass()
-            MapScaleView()
-            MapPitchToggle()
-        }        
         .sheet(isPresented: $bottomPresented) {
             NavigationStack(path: $bottomNavigationPath) {
                 MainBottomView(onAddressSelect: { loc in
@@ -91,8 +125,12 @@ struct MainView: View {
             .presentationDetents([Self.minimalDetent, .medium, .large], selection: $bottomDetent)
             .presentationBackgroundInteraction(.enabled)
             .interactiveDismissDisabled()
-
         }
+        .onChangeOf(viewModel.pois, perform: { newValue in
+            if !newValue.isEmpty {
+                showRefreshButton = false
+            }
+        })
         .onChangeOf(globalEnvironment.selectedPOI) { _ in
             updateBottomViewVisibility()
         }
@@ -138,6 +176,36 @@ struct MainView: View {
                 }
                 .onTapGesture {
                     globalEnvironment.selectedPOI = poi
+                }
+            }
+            .annotationTitles(.hidden)
+        }
+    }
+
+    func favoritePins() -> some MapContent {
+        ForEach(favoritePois) { poi in
+            Annotation(
+                poi.name,
+                coordinate: poi.coordinate,
+                anchor: .bottom
+            ) {
+                ZStack {
+                    Circle()
+                        .foregroundStyle(.red)
+                        .frame(minWidth: 15, minHeight: 15)
+                        .overlay(
+                            Circle()
+                                .stroke(.text, lineWidth: 1)
+                        )
+
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .foregroundColor(.text)
+                        .frame(width: 15, height: 15)
+                        .padding(5)
+                }
+                .onTapGesture {
+                    globalEnvironment.selectedPOI = poi.poiModel
                 }
             }
             .annotationTitles(.hidden)
