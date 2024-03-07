@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%@" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "cs" : {
@@ -128,6 +131,9 @@
           }
         }
       }
+    },
+    "Last visited %@" : {
+
     },
     "Location" : {
       "localizations" : {
@@ -311,6 +317,9 @@
         }
       }
     },
+    "Tap on checkin in the place details to create a list of places you have visited" : {
+
+    },
     "Terms" : {
       "localizations" : {
         "cs" : {
@@ -356,6 +365,12 @@
           }
         }
       }
+    },
+    "Visited places" : {
+
+    },
+    "Visited: %@" : {
+
     },
     "Web" : {
       "localizations" : {

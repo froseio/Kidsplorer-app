@@ -22,9 +22,8 @@ struct OnboardingView: View {
     var body: some View {
         ZStack(alignment: .top) {
 
-
             Rectangle()
-                .foregroundColor(Color.playground)
+                .foregroundColor(Color.playgroundBackground)
                 .ignoresSafeArea()
                 .opacity(0.3)
 

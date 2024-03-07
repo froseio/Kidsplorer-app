@@ -26,6 +26,10 @@ class AnalyticsManager {
         case skipIntroPaywall
         case buyFromintro
         case restoreFromintro
+
+        case checkin
+        case add_favorite
+        case rm_favorite
     }
 
     static func track(_ event: Event, detailMessage: String? = nil) {

@@ -14,26 +14,28 @@ struct MainBottomView: View {
 
     // MARK: - Properties
 
-    @State private var isScrolling = false
-    @State var isSearching = false
+    @State 
+    private var isScrolling = false
 
-    @EnvironmentObject var globalEnvironment: GlobalEnvironment
-    @EnvironmentObject var mainVM: MainViewModel
+    @State
+    var isSearching = false
 
-    @ObservedObject var locationManager = LocationManager.shared
-    @ObservedObject var defaults = UserDefaultsManager.shared
+    @EnvironmentObject
+    var mainVM: MainViewModel
 
     @Environment(\.openURL)
     var openURL
 
     var onAddressSelect: ((CLLocation) -> ())
 
-    var body: some View {
+    @State
+    var showVisitedPlaces = false
+
+    var body: some View {        
         ScrollView {
             mainView()
         }
     }
-
 
     // MARK: - Main content
 
@@ -101,6 +103,40 @@ struct MainBottomView: View {
             }
 
             CenterSummaryView()
+
+//            NavigationLink {                
+//                LastVisitedPlacesView()
+//                    .id("lastvisited")
+//            } label: {
+//                HStack {
+//                    Text("Visited places")
+//                    Spacer()
+//                    Image(systemName: "chevron.right")
+//                }
+//                .padding()
+//                .background(Color.background)
+//                .clipShape(RoundedRectangle(cornerRadius: 10))
+//            }
+//            .padding()
+
+            Button {
+                showVisitedPlaces.toggle()
+            } label: {
+                HStack {
+                    Text("Visited places")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                }
+                .padding()
+                .background(Color.background)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .sheet(isPresented: $showVisitedPlaces) {
+                    NavigationStack {
+                        LastVisitedPlacesView()
+                    }
+                }
+            }
+            .padding()
 
             HStack {
                 Button("Terms") {

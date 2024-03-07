@@ -54,7 +54,9 @@ struct KidsplorerApp: App {
     var globalEnvironment = GlobalEnvironment.shared
 
     let mainViewModel: MainViewModel
-    var sharedModelContainer: ModelContainer = {
+    var sharedModelContainer: ModelContainer
+
+    init() {
         let schema = Schema([
             FavoritePoi.self,
             VisitedPoi.self
@@ -62,13 +64,11 @@ struct KidsplorerApp: App {
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            self.sharedModelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
-    }()
 
-    init() {
         mainViewModel = MainViewModel(modelContext: sharedModelContainer.mainContext)
     }
 
@@ -100,10 +100,11 @@ struct KidsplorerApp: App {
             }
             else {
                 MainView()
+//                LastVisitedPlacesView()
+                    .modelContainer(sharedModelContainer)
                     .environmentObject(mainViewModel)
                     .environmentObject(globalEnvironment)                    
             }
-        }
-        .modelContainer(sharedModelContainer)
+        }        
     }
 }

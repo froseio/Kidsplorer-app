@@ -12,34 +12,41 @@ import SwiftUI
 
 class PlaceImgLoader: ObservableObject {
 
+    static let imageLoadingQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+
     @Published var image: UIImage?
 
     private var id: String
-    private var gpid: String?
     private var location: CLLocationCoordinate2D
     private var reloadNextTime: Bool = false
     private var imgSize = CGSize(width: 500, height: 500)
 
-    public init(id: String, location: CLLocation, gpid: String?) {
+    public init(id: String, location: CLLocation) {
         self.id = id
-        self.gpid = gpid
         self.location = location.coordinate
-
-        if let cachedImage = loadImageFromFileSystem() {
-            self.image = cachedImage
-        }
-
-
     }
 
     public func getImage() {
-        if let cachedImage = loadImageFromFileSystem() {
-            self.image = cachedImage
-        }
+        Self.imageLoadingQueue.addOperation { [weak self] in
+            guard let self = self else { return }
 
-        guard image == nil || reloadNextTime else { return }
-        
-        loadImage()
+            guard
+                self.image == nil || self.reloadNextTime else {
+                return
+            }
+
+            if let cachedImage = self.loadImageFromFileSystem() {
+                DispatchQueue.main.async {
+                    self.image = cachedImage
+                }
+            } else {
+                self.loadImage()
+            }
+        }
     }
 
     private func saveImageToFileSystem(image: UIImage) {
@@ -74,16 +81,17 @@ class PlaceImgLoader: ObservableObject {
         return directory.appendingPathComponent("\(id).png")
     }
 
-    private func loadImage() {
+    private func loadImage(attempt: Int = 1) {
         Task {
             do {
-
-                
-
                 let sceneRequest = MKLookAroundSceneRequest(coordinate: location)
                 guard let scene = try await sceneRequest.scene else {
                     logger.error("No scene for location \(self.location.latitude) x \(self.location.longitude)")
-                    loadMapImg()
+                    if attempt < 4 {
+                        loadImage(attempt: attempt + 1)
+                    } else {
+                        loadMapImg()
+                    }
                     return
                 }
 
@@ -101,7 +109,11 @@ class PlaceImgLoader: ObservableObject {
                 }
             } catch {
                 logger.error("Error loading image: \(error.localizedDescription)")
-                loadMapImg()
+                if attempt < 4 {
+                    loadImage(attempt: attempt + 1)
+                } else {
+                    loadMapImg()
+                }
             }
         }
     }
@@ -134,6 +146,7 @@ class PlaceImgLoader: ObservableObject {
                 self.reloadNextTime = true
                 DispatchQueue.main.async {
                     self.image = snapshot.image
+                    self.objectWillChange.send()
                 }
             } else if let error = error {
                 logger.error("Something went wrong \(error.localizedDescription)")

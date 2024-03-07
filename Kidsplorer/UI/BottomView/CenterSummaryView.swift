@@ -15,7 +15,7 @@ struct CenterSummaryView: View {
 
     // MARK: - Properties
     // MARK: Public
-    @ObservedObject 
+//    @ObservedObject 
     var locationManager = LocationManager.shared
 
     @ObservedObject
@@ -28,26 +28,20 @@ struct CenterSummaryView: View {
     @EnvironmentObject
     var mainViewModel: MainViewModel
 
-    @Query
-    var favorites: [FavoritePoi]
+    @Environment(\.modelContext)
+    private var modelContext
+    
+//    @Query
+    var favorites: [FavoritePoi] = []
 
     var body: some View {
-        Group {
-            listView()
-        }
-    }
-
-
-    // MARK: Subviews
-
-    @ViewBuilder
-    func listView() -> some View {
 
         let centerCoord = locationManager.lastLocation?.coordinate
         let centerLocation = CLLocation(latitude: centerCoord?.latitude ?? 0, longitude: centerCoord?.longitude ?? 0)
 
         LazyVStack(alignment: .leading) {
             SectionView(name: "Nearest places", count: mainViewModel.pois.count)
+                .padding(.horizontal)
             rowContent(
                 mainViewModel
                     .pois
@@ -72,6 +66,7 @@ struct CenterSummaryView: View {
             }
 
             SectionView(name: "Favorite places", count: favorites.count)
+                .padding(.horizontal)
             rowContent(
                 favorites
                     .map { $0.poiModel }
@@ -129,7 +124,9 @@ struct CenterSummaryView: View {
                                         globalEnvironment.showPaywall()
                                     }
                             }
+                            Image(systemName: "chevron.right")
                         }
+                        .padding(.horizontal)
                         rowContent(availableItems)
                     }
                 }
@@ -203,7 +200,6 @@ struct SectionView: View {
             }
         }
         .foregroundColor(.text)
-        .padding(.horizontal)
     }
 }
 
@@ -291,6 +287,6 @@ struct POIListItemView: View, Identifiable {
         .frame(width: 200, height: 150)
         .onAppear {
             imgLoader.getImage()
-        }
+        }        
     }
 }

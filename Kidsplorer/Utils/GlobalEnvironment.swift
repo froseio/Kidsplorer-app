@@ -50,7 +50,7 @@ class GlobalEnvironment: ObservableObject {
             .$isPremium
             .receive(on: DispatchQueue.main)
             .sink { isPremium in
-                if isPremium {
+                if isPremium, self.displayPaywall == true {
                     self.displayPaywall = false
                 }
             }

@@ -33,6 +33,7 @@ struct CenterCategoryView: View {
             let d2 = center.distance(from: p2Loc)
             return d1 < d2
         })
+        .analyticsScreen(name: "center_category_view")
     }
 
 

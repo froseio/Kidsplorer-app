@@ -32,10 +32,10 @@ final class VisitedPoi{
 extension VisitedPoi: Identifiable {
     var id: String {
         if let gpid {
-            return gpid
+            return "gpid_\(visitedDate.timeIntervalSince1970)"
         }
         else {
-            return "\(lat)_\(lon)_\(category)"
+            return "\(lat)_\(lon)_\(category)_\(visitedDate.timeIntervalSince1970)"
         }
     }
 

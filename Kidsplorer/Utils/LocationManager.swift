@@ -17,7 +17,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     override init() {
         super.init()
-        self.lastLocation = UserDefaultsManager.shared.userLocation
+//        self.lastLocation = UserDefaultsManager.shared.userLocation
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -51,8 +51,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         DispatchQueue.main.async {
             self.lastLocation = location
-            UserDefaultsManager.shared.userLocation = location
-            self.objectWillChange.send()
+//            UserDefaultsManager.shared.userLocation = location
+//            self.objectWillChange.send()
         }
     }
 }

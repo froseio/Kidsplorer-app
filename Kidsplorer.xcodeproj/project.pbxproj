@@ -167,7 +167,6 @@
 				903F17EF2B7D4C4300D82F68 /* MainViewModel.swift */,
 				903F18062B7E421800D82F68 /* BannerView.swift */,
 				903F180E2B832D8A00D82F68 /* OnboardingView.swift */,
-				902A546A2B9086FD00EFB13B /* LastVisitedPlacesView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 		903F17E42B7CB37B00D82F68 /* BottomView */ = {
 			isa = PBXGroup;
 			children = (
+				902A546A2B9086FD00EFB13B /* LastVisitedPlacesView.swift */,
 				903F18002B7E0F8D00D82F68 /* AddressInputView.swift */,
 				903F17FC2B7E0F1100D82F68 /* FilterItemView.swift */,
 				903F17FD2B7E0F1100D82F68 /* MainBottomView.swift */,
@@ -488,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -524,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.frose.Kidsplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

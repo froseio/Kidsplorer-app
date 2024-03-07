@@ -141,6 +141,8 @@ fileprivate struct PoiDetailSubView: View {
     @Query
     var allFavorites: [FavoritePoi]
 
+    @Query(sort: \VisitedPoi.visitedDate, order: .reverse)
+    var checkins: [VisitedPoi]
 
     init(poi: POIModel, detail: POIDetailModel) {
         self.poi = poi
@@ -151,6 +153,13 @@ fileprivate struct PoiDetailSubView: View {
             location: CLLocation(latitude: poi.lat, longitude: poi.lon)
         )
     }
+
+    private let itemFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
 
     var body: some View {
         ScrollView {
@@ -164,30 +173,38 @@ fileprivate struct PoiDetailSubView: View {
                 summaryView
 
                 HStack {
-//                    Button(action: {
-//                        // TODO: checking
-//                    }, label: {
-//                        HStack {
-//                            Spacer()
-//                            VStack {
-//                                Text("Check in")
-//                                // TODO: last checkin
-//                            }
-//                            .foregroundColor(.text)
-//                            Spacer()
-//                        }
-//                    })
-//                    .padding()
-//                    .background {
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .foregroundColor(.background)
-//                    }
+                    Button(action: {
+                        AnalyticsManager.track(.checkin)
+                        let checkPoi = VisitedPoi(
+                            lat: poi.lat,
+                            lon: poi.lon,
+                            name: poi.name,
+                            category: poi.category,
+                            gpid: poi.gpid,
+                            visitedDate: Date())
+                        modelContext.insert(checkPoi)
 
-                    Spacer()
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text("Check in")
+                            }
+                            .foregroundColor(.text)
+                            Spacer()
+                        }
+                    })
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.background)
+                    }
+
 
                     if let fav = allFavorites.first(where: {$0.id == poi.id}) {
                         Button(action: {
                             modelContext.delete(fav)
+                            AnalyticsManager.track(.rm_favorite)
                         }, label: {
                             Image(systemName: "heart.fill")
                                 .foregroundStyle(Color.red)
@@ -200,6 +217,7 @@ fileprivate struct PoiDetailSubView: View {
                     }
                     else {
                         Button(action: {
+                            AnalyticsManager.track(.add_favorite)
                             let fp = FavoritePoi(
                                 lat: poi.lat,
                                 lon: poi.lon,
@@ -222,6 +240,12 @@ fileprivate struct PoiDetailSubView: View {
 
                 }
                 .padding()
+
+                if let fav = checkins.first(where: {$0.id == poi.id}) {
+                    Text("Last visited \(fav.visitedDate, formatter: itemFormatter)")
+                        .font(.footnote)
+                        .padding(.horizontal)
+                }
 
                 addressView
 
@@ -370,7 +394,7 @@ fileprivate struct PoiDetailSubView: View {
                     .bold()
                     .foregroundColor(.text)
                     .padding()
-                    .background(Color.playground)
+                    .background(Color.playgroundBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 5))                
             })
 

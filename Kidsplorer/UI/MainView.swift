@@ -46,12 +46,6 @@ struct MainView: View {
     private var bottomPresented: Bool = true
 
     @State
-    private var bottomNavigationPath = NavigationPath()
-
-    @State
-    private var bottomDetent: PresentationDetent = minimalDetent
-
-    @State
     private var showRefreshButton = false
 
     @State
@@ -82,6 +76,7 @@ struct MainView: View {
                 }
 
                 showRefreshButton = true
+                region = context.region
             }
             .mapControls {
                 MapUserLocationButton()
@@ -106,7 +101,7 @@ struct MainView: View {
             }
         }
         .sheet(isPresented: $bottomPresented) {
-            NavigationStack(path: $bottomNavigationPath) {
+            NavigationStack {
                 MainBottomView(onAddressSelect: { loc in
                     mapPosition = .camera(MapCamera(centerCoordinate: loc.coordinate, distance: 10000))
                 })
@@ -122,7 +117,7 @@ struct MainView: View {
                     }
             }
             .presentationBackground(.regularMaterial)
-            .presentationDetents([Self.minimalDetent, .medium, .large], selection: $bottomDetent)
+            .presentationDetents([Self.minimalDetent, .medium, .large])
             .presentationBackgroundInteraction(.enabled)
             .interactiveDismissDisabled()
         }
@@ -137,7 +132,7 @@ struct MainView: View {
         .sheet(item: $globalEnvironment.selectedPOI) { poi in
             POIDetailView(poi: poi, detail: poi.detail)
                 .presentationBackground(.regularMaterial)
-                .presentationDetents([.medium, .large], selection: $bottomDetent)
+                .presentationDetents([.medium, .large])
                 .presentationBackgroundInteraction(.enabled)
         }
     }

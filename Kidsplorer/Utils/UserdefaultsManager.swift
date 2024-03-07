@@ -94,13 +94,13 @@ class UserDefaultsManager: ObservableObject {
             self.lastPaywallShow = date
         }
 
-        self.userLocation = {
-            guard let data = UserDefaults.standard.data(forKey: UserDefaultsKey.userLocationKey.rawValue),
-                  let location = try? NSKeyedUnarchiver.unarchivedObject(ofClass: CLLocation.self, from: data) else {
-                return nil
-            }
-            return location
-        }()
+//        self.userLocation = {
+//            guard let data = UserDefaults.standard.data(forKey: UserDefaultsKey.userLocationKey.rawValue),
+//                  let location = try? NSKeyedUnarchiver.unarchivedObject(ofClass: CLLocation.self, from: data) else {
+//                return nil
+//            }
+//            return location
+//        }()
 
         self.enabledCategories = {
             guard let data = UserDefaults.standard.data(forKey: UserDefaultsKey.enabledCategories.rawValue),
